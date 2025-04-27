@@ -1,5 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router';
+import AuthProvider, { AuthContex } from '../AuthProvider/AuthProvider';
+
+
+
+
 const links = <>
     <li><Link to='/'>Home</Link></li>
     <li><Link to='/login'>sing in</Link></li>
@@ -9,6 +14,11 @@ const links = <>
 
 
 const Nav = () => {
+
+    const get = useContext(AuthContex)
+    console.log(get)
+
+
     return (
         <div className="navbar bg-base-100 shadow-sm">
             <div className="navbar-start">
