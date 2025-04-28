@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
+import { AuthContex } from '../AuthProvider/AuthProvider';
 import { Link } from 'react-router';
 
+
+
 const Singup = () => {
+    const { createuser } = useContext(AuthContex)
     const handlesingup = (e) => {
+
         e.preventDefault()
 
         const mail = e.target.email.value;
@@ -10,6 +15,13 @@ const Singup = () => {
 
         console.log(mail, pass)
         console.log("value are comming soon")
+
+        createuser(mail, pass)
+            .then((res) => res.user)
+            .catch((err) => console.log("err", err))
+
+
+
     }
 
     return (
