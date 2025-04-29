@@ -5,15 +5,11 @@ import AuthProvider, { AuthContex } from '../AuthProvider/AuthProvider';
 
 
 
-const links = <>
-    <li><Link to='/'>Home</Link></li>
-    <li><Link to='/login'>sing in</Link></li>
-    <li><Link to='/Singup'>singup</Link></li>
 
-</>
 
 
 const Nav = () => {
+
 
     const { user, singOutUser } = useContext(AuthContex)
     console.log()
@@ -23,6 +19,23 @@ const Nav = () => {
 
 
     }
+
+
+
+    const links = <>
+        <li><Link to='/'>Home</Link></li>
+        <li><Link to='/login'>sing in</Link></li>
+        <li><Link to='/Singup'>singup</Link></li>
+        {
+            user && <> <li><Link to='/orders'>orders</Link></li></>
+        }
+
+
+
+    </>
+
+
+
 
 
     return (
