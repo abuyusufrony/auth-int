@@ -1,8 +1,9 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router';
+import { Link, Navigate, useNavigate, useNavigation } from 'react-router';
 import { AuthContex } from '../AuthProvider/AuthProvider';
 
 const Login = () => {
+    const nav = useNavigate()
     const { loginUser } = useContext(AuthContex)
 
     const handlelogin = (e) => {
@@ -14,7 +15,13 @@ const Login = () => {
 
         // console.log("login are added soon")
         loginUser(mail, pass)
-            .then((res) => console.log("user are successfully login", res.user))
+            .then((res) => {
+                console.log("user are successfully login", res.user)
+                e.target.reset
+                nav('/')
+
+            })
+
             .catch((err) => console.log("err", err))
     }
     return (

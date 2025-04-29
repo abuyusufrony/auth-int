@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { AuthContex } from '../AuthProvider/AuthProvider';
-import { Link } from 'react-router';
+import { Link, Navigate } from 'react-router';
 
 
 
@@ -17,7 +17,11 @@ const Singup = () => {
         // console.log("value are comming soon")
 
         createuser(mail, pass)
-            .then((res) => console.log(res.user))
+            .then((res) => {
+                console.log(res.user)
+
+            })
+
             .catch((err) => console.log("err", err))
 
 
