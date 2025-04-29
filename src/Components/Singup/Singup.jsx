@@ -13,11 +13,11 @@ const Singup = () => {
         const mail = e.target.email.value;
         const pass = e.target.password.value;
 
-        console.log(mail, pass)
-        console.log("value are comming soon")
+        // console.log(mail, pass)
+        // console.log("value are comming soon")
 
         createuser(mail, pass)
-            .then((res) => res.user)
+            .then((res) => console.log(res.user))
             .catch((err) => console.log("err", err))
 
 
