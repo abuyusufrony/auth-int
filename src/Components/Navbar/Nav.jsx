@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router';
+import { Link, Links } from 'react-router';
 import AuthProvider, { AuthContex } from '../AuthProvider/AuthProvider';
 
 
@@ -15,8 +15,14 @@ const links = <>
 
 const Nav = () => {
 
-    const get = useContext(AuthContex)
-    console.log(get)
+    const { user, singOutUser } = useContext(AuthContex)
+    console.log()
+    const navSingout = () => {
+        singOutUser()
+            .then(() => console.log("user are singout sucessfully"))
+
+
+    }
 
 
     return (
@@ -40,8 +46,16 @@ const Nav = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <a className="btn">Button</a>
+
+                {
+                    user ? <><Link onClick={navSingout} className="btn">Singout</Link>
+                        <h2>{user.email}</h2></>
+                        : <a className="btn">Login</a>
+                }
+
+
             </div>
+
         </div>
     );
 };
